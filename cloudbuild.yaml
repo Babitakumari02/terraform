@@ -1,7 +1,12 @@
 steps:
-- name: "gcr.io/cloud-builders/docker"
-  args: ["build", "-t", "gcr.io/$project_id/cloudrun1", "."]
-- name: "gcr.io/cloud-builders/docker"
-  args: ["push", "gcr.io/$project_id/cloudrun1"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: [
+      "build",
+      "-t", "gcr.io/$PROJECT_ID/cloudrun1:latest",
+      "."
+    ]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/cloudrun1:latest"]
+
 images:
-- "gcr.io/$project_id/cloudrun1"
+  - "gcr.io/$PROJECT_ID/cloudrun1:latest"
